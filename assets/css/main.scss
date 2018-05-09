@@ -1,0 +1,28 @@
+$baseWidth: 750px;
+$sca-base: 1;
+$Color: #228fbd;
+$device-widths: 240px, 320px, 360px, 375px, 412px, 480px, 540px, 640px, 720px, 768px, 1024px, 1440px;
+
+@each $current-width in $device-widths {
+  @media screen and (min-width: $current-width) {
+    $sca-base: $baseWidth/$current-width;
+  }
+}
+
+@function toScaPx($px) {
+  @return $px*$sca-base*1px;
+}
+
+@function toScaX($px) {
+  @return toScaPx($px);
+}
+
+@function toScaY($px) {
+  @return toScaPx($px);
+}
+
+
+@function toScaVW($px){
+  @return $px /($baseWidth/1px) *100vw;
+}
+
